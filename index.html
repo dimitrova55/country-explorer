@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_Dilyana_202055501</title>
+
+    <style>
+    body {
+        background-color: hsl(0, 0%, 93%)
+    }
+    header {
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    #title{
+        font-size: 50px;
+        font-style: italic;
+        color: rgb(73, 32, 138);
+
+    }
+    section {
+        padding: 15px;
+        margin: auto;
+        justify-content: space-between;
+        align-items: center;
+    }
+    form {
+        display: inline-block;
+        justify-content: space-between;
+        padding: 20px;
+        clear: both;
+        
+    }
+    img {
+        max-width: 400px;
+        max-height: 1000px;
+    }
+    input[type = "text"]{
+        border-radius: 4px;
+        border: none;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px rgba(0, 0, 0, 0.20);
+        color: inherit;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 14px;
+        padding: 15px;
+        min-width: 300px;
+    }
+    input[type = "number"], #month {
+        border-radius: 4px;
+        border: none;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px rgba(0, 0, 0, 0.20);
+        color: inherit;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 14px;
+        padding: 15px;
+        clear: both;
+    }
+
+    input[type = "button"] {
+        border-radius: 4px;
+        border:hsla(287, 36%, 82%, 0.829);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.219), 0 1px 2px rgba(0, 0, 0, 0.20);
+        background-color: hsla(278, 56%, 72%, 0.459);
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 14px;
+        padding: 13px;        
+
+    }
+    #flag, #countryInfo {
+        float:left;
+        margin:10px;
+        padding-right: 30px;
+    }
+    #countryName, #holidaysTitle {
+        font-size: 35px;
+        font-style: oblique;
+        justify-items: center;
+    }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- first api: https://restcountries.eu/rest/v2/all
+    second api: https://calendarific.com/api/v2/holidays?&api_key=e9c5a4a0d893f4a09aed99d3541cd56c16bfca4a&country=BG&year=2019&month=03 
+     for Korea in the search field it has to be written: Republic of Korea  -->
+        
+</head>
+
+<body>
+    <header>
+        <h1 id = "title">Where in the world...</h1>
+    </header>
+
+    <section name = "sec1">
+        <!--search forms-->
+        <form name = "form1">
+            <input type = "text" id = "input" name = "input" placeholder = "Search for a country...">
+            <input type = "button" id = "search" value = "search" onclick = "searchInfo()">
+            <input type = "button" value = "clear" onclick="clearForm()">
+        </form>
+        <form name = "form2">
+            <input type="number" id = "year" name = "year" placeholder = "year" min="1990">
+            <select id = "month", name = "month">
+                <option value="0">none</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <input type = "button" id = "searchHoliday" value = "search" onclick = "searchHolidays()">
+            <input type = "button" value = "clear" onclick="clearDate()">
+        </form>
+        
+        <!--Contains Information about country -->    
+        <div id = "country" name = "country">
+            <h3 id = "countryName" name = "countryName"></h3>
+            <img id = "flag" name = "flag">
+            <div id = "countryInfo" name = "countryInfo" ></div>
+        </div>
+
+    </section>
+    
+    <section name = "sec2">
+        <!--Will contain information about Holidays-->
+        <div id = "holidays" name = "holidays">
+            <h3 id = "holidaysTitle" name = "holidaysTitle" style="clear: both; font-size: 25px;"></h3>
+            <div id = "holidaysList" name = "holidaysList"></div>
+        </div>
+        
+    </section>
+    
+    <script src="./project_js/script.js"></script>   
+
+</body>
+</html>
