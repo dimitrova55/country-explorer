@@ -1,38 +1,33 @@
 body {
-    background-color: blueviolet;
-    background-color: hsl(0, 0%, 93%)
+    background-color: hsl(0, 0%, 93%);
+    display: block;
 }
 header {
-    padding: 5px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    
+    margin: 2em;
 }
+
 #title{
-    font-size: 50px;
+    font-size: 4rem;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 600;
     font-style: italic;
     color: rgb(73, 32, 138);
+}
 
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+    margin: 2em;
 }
-section {
-    padding: 15px;
-    margin: auto;
-    justify-content: space-between;
-    align-items: center;
-}
+
 form {
-    display: inline-block;
-    justify-content: space-between;
-    padding: 20px;
-    clear: both;
-    
+    padding: 1em;
 }
-img {
-    max-width: 400px;
-    max-height: 1000px;
-}
-input[type = "text"]{
+
+input, select {
     border-radius: 4px;
     border: none;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px rgba(0, 0, 0, 0.20);
@@ -40,36 +35,41 @@ input[type = "text"]{
     font-family: 'Nunito Sans', sans-serif;
     font-size: 14px;
     padding: 15px;
-    min-width: 300px;
-}
-input[type = "number"], #month {
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px rgba(0, 0, 0, 0.20);
-    color: inherit;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 14px;
-    padding: 15px;
+    margin-left: 15px;
     clear: both;
 }
 
-input[type = "button"] {
-    border-radius: 4px;
+input[type = "submit"] {
     border:hsla(287, 36%, 82%, 0.829);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.219), 0 1px 2px rgba(0, 0, 0, 0.20);
     background-color: hsla(278, 56%, 72%, 0.459);
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 14px;
-    padding: 13px;        
+}
 
+.container.country-info, .container.text-info {
+    flex-direction: column;
 }
-#flag, #countryInfo {
-    float:left;
-    margin:10px;
-    padding-right: 30px;
+.container.text-info {
+    font-size: 1.5rem;
+    padding: 0em;
+    margin: 0em;
 }
-#countryName, #holidaysTitle {
-    font-size: 35px;
-    font-style: oblique;
-    justify-items: center;
+
+#countryName{
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 0;
+}
+
+img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+p {
+    margin: 5px;
 }
