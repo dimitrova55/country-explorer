@@ -37,7 +37,7 @@ app.post("/", async(req, res) => {
                 calendar: response_calendar.data.response.holidays
               });
         } else {
-            res.render("index.ejs", {data: response_country.data[0]});
+            res.render("index.ejs", {country: response_country.data[0]});
         }        
     } catch (error) {
         console.log(error.message);
