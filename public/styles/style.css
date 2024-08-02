@@ -1,6 +1,9 @@
-body {
-    background-color: hsl(0, 0%, 93%);
-    display: block;
+/* used palette: https://colorhunt.co/palette/1e03420e46a39ac8cde1f7f5 */
+
+html {
+    background-color: rgb(225, 247, 245);
+    display: flex;
+    flex-direction: column;
 }
 header {
     display: flex;
@@ -13,7 +16,7 @@ header {
     font-family: "Libre Baskerville", serif;
     font-weight: 600;
     font-style: italic;
-    color: rgb(73, 32, 138);
+    color: rgb(30, 3, 66); 
 }
 
 .container {
@@ -33,30 +36,32 @@ input, select {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px rgba(0, 0, 0, 0.20);
     color: inherit;
     font-family: 'Nunito Sans', sans-serif;
-    font-size: 14px;
+    font-size: 25px;
     padding: 15px;
     margin-left: 15px;
+    margin-bottom: 15px;
     clear: both;
 }
 
 input[type = "submit"] {
     border:hsla(287, 36%, 82%, 0.829);
-    background-color: hsla(278, 56%, 72%, 0.459);
+    background-color: rgb(154, 200, 205);
 }
 
-.container.country-info, .container.text-info {
+.container.country-info, .container.text-info, ul{
     flex-direction: column;
 }
-.container.text-info {
+.container.text-info{
     font-size: 1.5rem;
     padding: 0em;
     margin: 0em;
 }
 
-#countryName{
+#countryName, #calendarTitle{
     font-family: "Libre Baskerville", serif;
     font-weight: 400;
     font-style: italic;
+    color: rgb(30, 3, 66);
     display: flex;
     justify-content: center;
     font-size: 3rem;
@@ -70,6 +75,25 @@ img {
     margin-right: 2em;
 }
 
-p {
-    margin: 5px;
+p, li {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 200;
+    color: rgb(14, 70, 163);
+    margin: 5px;    
+}
+
+ul {
+    font-size: 1.2em;
+    padding: 0em;
+    margin: 0em;
+}
+
+@media(max-width: 1200px){
+    #country-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container.text-info {
+        margin: 2em;
+    }
 }
