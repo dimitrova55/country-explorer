@@ -7,7 +7,8 @@ html {
 }
 header {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin: 2em;
 }
 
@@ -57,7 +58,7 @@ input[type = "submit"] {
     margin: 0em;
 }
 
-#countryName, #calendarTitle{
+#countryName, #calendarTitle, #subtitle{
     font-family: "Libre Baskerville", serif;
     font-weight: 400;
     font-style: italic;
