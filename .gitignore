@@ -1,6 +1,7 @@
 # Other files to ignore
 *.mp4
 *.docx
+.env
 
 # Logs
 logs

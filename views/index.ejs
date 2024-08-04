@@ -15,75 +15,84 @@
 </head>
 
 <body>
-    <header>
-        <h1 id = "title">Country Explorer</h1>
-        <h3 id="subtitle" style="font-size: 2rem">Search for a country and its holidays!</h3>
-    </header>
+    <div class="main">
+        <header>
+            <h1 id = "title">Country Explorer</h1>
+            <h3 id="subtitle" style="font-size: 2rem">Search for a country and its holidays!</h3>
+        </header>
 
-    <section class= "container">
-        <!--search forms-->
-        <form action="/" id="form" method="POST">
-            <input type = "text" id = "country" name = "country" placeholder = "Country Name" required>
-            <input type= "number" id = "year" name = "year" placeholder = "Year" min="1990" max="2024">
-            <select name="month">
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-            </select>
-            <input type = "submit" id = "submit" value = "search">
-            
-        </form>
-    </section>
+        <section class= "container">
+            <!--search form-->
+            <form action="/" id="form" method="POST">
+                <input type = "text" id = "country" name = "country" placeholder = "Country Name" required>
+                <input type= "number" id = "year" name = "year" placeholder = "Year" min="1990" max="2024">
+                <select name="month">
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <input type = "submit" id = "submit" value = "search">
+                
+            </form>
+        </section>
+        
+        <!--Contains Information about the country -->    
+        <section class="container country-info">
+            <% if (locals.country) { %>
+                <h3 id = "countryName"> <%= country.name.common %></h3>
+                <div id="country-info" class="container ">
+                    <img src= "<%= country.flags.svg %>" alt="<%= country.flags.all %>">
 
-    <!--Contains Information about country -->    
-    <section class="container country-info">
-        <% if (locals.country) { %>
-            <h3 id = "countryName"> <%= country.name.common %></h3>
-            <div id="country-info" class="container ">
-                <img src= "<%= country.flags.svg %>" alt="<%= country.flags.all %>">
+                    <div class="container text-info">
+                        <p><b>Official Name:</b> <%= country.name.official %></p>
+                        <p><b>Capital City:</b> <%= country.capital[0] %></p>
+                        <p><b>Languages: </b> 
+                            <% 
+                                const languagesArray = Object.values(country.languages);
+                                languagesArray.forEach((lang, index) => { 
+                            %>
+                            <%= lang %><%= index < languagesArray.length - 1 ? ', ' : '' %>
+                            <% }); %>
+                        </p>
+                        <p><b>Population:</b> <%= country.population.toLocaleString() %> </p>
+                    </div>
 
-                <div class="container text-info">
-                    <p><b>Official Name:</b> <%= country.name.official %></p>
-                    <p><b>Capital City:</b> <%= country.capital[0] %></p>
-                    <p><b>Languages: </b> 
-                        <% 
-                            const languagesArray = Object.values(country.languages);
-                            languagesArray.forEach((lang, index) => { 
-                        %>
-                        <%= lang %><%= index < languagesArray.length - 1 ? ', ' : '' %>
-                        <% }); %>
-                    </p>
-                    <p><b>Population:</b> <%= country.population.toLocaleString() %> </p>
+                    <img src="<%= country.coatOfArms.svg %>" alt="Coat Of Arms">
                 </div>
-
-                <img src="<%= country.coatOfArms.svg %>" alt="Coat Of Arms">
-            </div>
-        <% } %>
-    </section>
-
-    <% if (locals.calendar) { %>
-
-        <section class="container calendar">
-            <div>
-                <h3 id="calendarTitle"> Holidays in <%= calendar[0].country.name %> for <%= calendar[0].date.datetime.month %>/<%= calendar[0].date.datetime.year %>!</h3>
-                <ul class="container">
-                    <% calendar.forEach(holiday => { %>
-                        <li><b><%= holiday.date.datetime.year %>-<%= holiday.date.datetime.month %>-<%= holiday.date.datetime.day %>:</b> 
-                            <%= holiday.name %></li>
-                    <% }); %>
-                </ul>
-            </div>
+            <% } %>
         </section>
 
-    <% } %>
+        <% if (locals.calendar) { %>
+
+            <section class="container calendar">
+                <div>
+                    <h3 id="calendarTitle"> Holidays in <%= calendar[0].country.name %> for <%= calendar[0].date.datetime.month %>/<%= calendar[0].date.datetime.year %>!</h3>
+                    <ul class="container">
+                        <% calendar.forEach(holiday => { %>
+                            <li><b><%= holiday.date.datetime.year %>-<%= holiday.date.datetime.month %>-<%= holiday.date.datetime.day %>:</b> 
+                                <%= holiday.name %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </section>
+    
+        <% } %>
+    </div>
+
+    <footer>
+        <a class="icon-link" href="https://github.com/dimitrova55/country-explorer">
+            <img id="github" src="/images/github.png" alt="link to the github repository">
+        </a>
+    </footer>    
+    
 </body>
 </html>
