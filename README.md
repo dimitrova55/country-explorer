@@ -13,5 +13,4 @@ CountryExplorer is a **web application** that allows users to **explore** inform
 
 ## Usage
 
-[gif]
-
+![image](public\images\country-explorer.gif)

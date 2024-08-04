@@ -85,7 +85,13 @@
                 </div>
             </section>
     
-        <% } %>
+        <% } else if(locals.message){%>
+            <section class="container calendar">
+                <div>
+                    <h3 id="calendarTitle">  No Holidays in <%= country.name.common %> for this month!</h3>
+                </div>
+            </section>
+        <% }%>
     </div>
 
     <footer>
