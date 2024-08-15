@@ -6,12 +6,7 @@
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- first api: https://restcountries.com/
-    second api: https://calendarific.com/api/v2/holidays?&api_key=e9c5a4a0d893f4a09aed99d3541cd56c16bfca4a&country=BG&year=2019&month=03 
-    South Korea-->
-        
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">        
 </head>
 
 <body>
@@ -25,7 +20,7 @@
             <!--search form-->
             <form action="/" id="form" method="POST">
                 <input type = "text" id = "country" name = "country" placeholder = "Country Name" required>
-                <input type= "number" id = "year" name = "year" placeholder = "Year" min="1990" max="2024">
+                <input type= "number" id = "year" name = "year" placeholder = "Year" min="1990" max="2024" required>
                 <select name="month">
                     <option value="1">January</option>
                     <option value="2">February</option>
@@ -85,7 +80,7 @@
                 </div>
             </section>
     
-        <% } else if(locals.message){%>
+        <% } else if (locals.country){%>
             <section class="container calendar">
                 <div>
                     <h3 id="calendarTitle">  No Holidays in <%= country.name.common %> for this month!</h3>

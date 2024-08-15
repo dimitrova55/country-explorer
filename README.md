@@ -13,4 +13,4 @@ CountryExplorer is a **web application** that allows users to **explore** inform
 
 ## Usage
 
-![gif demo](https://raw.githubusercontent.com/dimitrova55/country-explorer/main/public/images/country-explorer.gif)
+[gif demo](https://github.com/dimitrova55/country-explorer/blob/main/country-explorer.gif)

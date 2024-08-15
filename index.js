@@ -26,36 +26,34 @@ app.post("/", async(req, res) => {
 
         // if an year is entered, search the 2nd API
         if(req.body.year){
-            const response_calendar = await axios.get(
-                `https://calendarific.com/api/v2/holidays?` +
-                `&api_key=${api_key}` +
-                `&country=${country_code}` +
-                `&year=${req.body.year}` +
-                `&month=${req.body.month}`
-              );
-            
-            // Checks if the API returns an empty object
-            if (Object.entries(response_calendar.data.response.holidays).length === 0){
-                console.log("the object is empty");
+            try{
+                const response_calendar = await axios.get(
+                    `https://calendarific.com/api/v2/holidays?` +
+                    `&api_key=${api_key}` +
+                    `&country=${country_code}` +
+                    `&year=${req.body.year}` +
+                    `&month=${req.body.month}`
+                  );
                 
-                res.render("index.ejs", {
-                    country: response_country.data[0],
-                    message: "No holidays."
-                });
-
-            } else {
-            
-                res.render("index.ejs", {
-                    country: response_country.data[0],
-                    calendar: response_calendar.data.response.holidays
-                });
-            }
-              
+                // Checks if the API returns an empty object
+                if (Object.entries(response_calendar.data.response.holidays).length === 0)                    
+                    res.render("index.ejs", {country: response_country.data[0]});    
+                else {                
+                    res.render("index.ejs", {
+                        country: response_country.data[0],
+                        calendar: response_calendar.data.response.holidays
+                    });
+                }
+            } catch (error){
+                console.log(error.message);
+                res.status(500).send(`Error fetching holiday data.`);
+            }            
         } else {
             res.render("index.ejs", {country: response_country.data[0]});
         }        
     } catch (error) {
         console.log(error.message);
+        res.status(500).send(`Error fetching country data.`);
     }
 });
 
